@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <style>
+        .highlight {
+            background-color: red;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+        }
+        .normal {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        {% if unread_notifications %}
+            <div class="highlight">
+                <p>You have unread notifications!</p>
+            </div>
+        {% else %}
+            <div class="normal">
+                <p>No unread notifications.</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+
+{% for notification in unread_notifications %}
+    <div class="highlight">
+        <p>{{ notification.message }}</p>
+        <form method="POST" action="{% url 'mark_as_read' notification.id %}">
+            {% csrf_token %}
+            <button type="submit">Mark as Read</button>
+        </form>
+    </div>
+{% endfor %}
