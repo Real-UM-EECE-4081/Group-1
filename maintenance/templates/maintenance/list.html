@@ -1,0 +1,10 @@
+<h1>Maintenance Notifications</h1>
+<ul>
+    {% for notification in notifications %}
+        <li>
+            <strong>{{ notification.title }}</strong><br>
+            {{ notification.description }}<br>
+            From {{ notification.start_time }} to {{ notification.end_time }}<br>
+        </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,16 @@
+<form method="POST">
+    {% csrf_token %}
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" required>
+
+    <label for="description">Description</label>
+    <textarea name="description" id="description" required></textarea>
+
+    <label for="start_time">Start Time</label>
+    <input type="datetime-local" name="start_time" required>
+
+    <label for="end_time">End Time</label>
+    <input type="datetime-local" name="end_time" required>
+
+    <button type="submit">Create Notification</button>
+</form>
