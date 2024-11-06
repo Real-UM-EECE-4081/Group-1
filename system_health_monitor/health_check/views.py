@@ -8,10 +8,11 @@ from django.utils import timezone
 
 # Initialize Faker to create fake data for services (Testing Purpose)
 fake = Faker()
+#print(fake.url())
 
 # Create your views here.
 
-# Creating the fake data 
+# Creating the fake data for Testing purpose 
 def create_fake_services():
     # It going to create 10 fake services 
     for _ in range(10):
@@ -19,6 +20,7 @@ def create_fake_services():
         service_name = fake.company()
         # Generates a fake url for the service
         service_url = fake.url()
+        print(f"Generated URL: {service_url}")  # Debug line
         # Generates a random token for the auth.
         auth_token = fake.sha1()
         # It choose randolmy if the service is OK or DOWN

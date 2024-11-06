@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Service(models.Model):
     name = models.CharField(max_length=100)
-    url = models.URLField()
+    url = models.URLField(null=True,blank=True)
     auth_token = models.CharField(max_length=255,blank=True,null=True)
     status = models.CharField(max_length=10)
     last_checked = models.DateTimeField(auto_now=True)
