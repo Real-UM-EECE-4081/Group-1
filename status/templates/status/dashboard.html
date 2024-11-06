@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Status</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .server-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .server-table th, .server-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .server-table th {
+            background-color: #007bff;
+            color: white;
+        }
+        .status-up {
+            color: green;
+        }
+        .status-down {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Server Status</h1>
+    <table class="server-table">
+        <thead>
+            <tr>
+                <th>Server Name</th>
+                <th>Status</th>
+                <th>Severity</th>
+                <th>Last Checked</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for server in servers %}
+                <tr>
+                    <td>{{ server.name }}</td>
+                    <td class="{% if server.status == 'up' %}status-up{% else %}status-down{% endif %}">
+                        {{ server.status }}
+                    </td>
+                    <td>{{ server.severity }}</td>
+                    <td>{{ server.last_checked }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
